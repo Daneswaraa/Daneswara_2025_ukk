@@ -21,51 +21,45 @@
 
          
 
-          <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="text-lg text-gray-700 px-2">Identitas Industri</legend>
+        <fieldset class="border border-gray-300 rounded-md p-4">
+    <legend class="text-lg text-gray-700 px-2">Identitas Industri</legend>
 
-            <div class="mb-4">
-              <label for="indNama" class="block mb-2 text-sm font-bold text-gray-700">Nama</label>
-              <input wire:model="indNama" type="text" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none">
-                  
-              @error('indNama') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
+    <div class="mb-4">
+        <label for="indNama" class="block mb-2 text-sm font-bold text-gray-700">Nama</label>
+        <input wire:model="indNama" type="text" class="mt-1 p-2 border rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none">
+        @error('indNama') <span class="text-red-500">{{ $message }}</span> @enderror
+    </div>
 
-            <div class="mb-4">
-              <label for="indBidUs" class="block mb-2 text-sm font-bold text-gray-700">Bidang Usaha</label>
-              {{-- <input wire:model="indBidUs" type="textarea" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none"> --}}
-              <textarea wire:model="indBidUs">
-              </textarea>    
-              @error('indBidUs') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
+    <div class="mb-4">
+        <label for="indBidUs" class="block mb-2 text-sm font-bold text-gray-700">Bidang Usaha</label>
+        <textarea wire:model="indBidUs" class="mt-1 p-2 border rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none"></textarea>
+        @error('indBidUs') <span class="text-red-500">{{ $message }}</span> @enderror
+    </div>
 
-            <div class="mb-4">
-              <label for="indAlmt" class="block mb-2 text-sm font-bold text-gray-700">Alamat</label>
-              {{-- <input wire:model="indBidUs" type="textarea" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none"> --}}
-              <textarea wire:model="indAlmt">
-              </textarea>    
-              @error('indAlmt') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
+    <div class="mb-4">
+        <label for="indAlmt" class="block mb-2 text-sm font-bold text-gray-700">Alamat</label>
+        <textarea wire:model="indAlmt" class="mt-1 p-2 border rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none"></textarea>
+        @error('indAlmt') <span class="text-red-500">{{ $message }}</span> @enderror
+    </div>
 
-            <div class="mb-4">
-              <label for="indKontak" class="block mb-2 text-sm font-bold text-gray-700">Kontak</label>
-              <input wire:model="indKontak" type="text" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none">
-                  
-              @error('indKontak') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
+    <div class="mb-4">
+        <label for="indKontak" class="block mb-2 text-sm font-bold text-gray-700">Kontak</label>
+        <input wire:model="indKontak" type="text" class="mt-1 p-2 border rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none">
+        @error('indKontak') <span class="text-red-500">{{ $message }}</span> @enderror
+    </div>
 
-            <div class="mb-4">
-              <label for="indEmail" class="block mb-2 text-sm font-bold text-gray-700">email</label>
-              <input wire:model="indEmail" type="text" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none">
-                  
-              @error('indEmail') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
-            <div class="mb-4">
-              <label for="indWebsite" class="block mb-2 text-sm font-bold text-gray-700">Website</label>
-              <input wire:model="indWebsite" type="text" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none">
-                  
-              @error('indWebsite') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
+    <div class="mb-4">
+        <label for="indEmail" class="block mb-2 text-sm font-bold text-gray-700">Email</label>
+        <input wire:model="indEmail" type="email" class="mt-1 p-2 border rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none">
+        @error('indEmail') <span class="text-red-500">{{ $message }}</span> @enderror
+    </div>
+
+    <div class="mb-4">
+        <label for="indWebsite" class="block mb-2 text-sm font-bold text-gray-700">Website</label>
+        <input wire:model="indWebsite" type="text" class="mt-1 p-2 border rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none">
+        @error('indWebsite') <span class="text-red-500">{{ $message }}</span> @enderror
+    </div>
+</fieldset>
 
 
             

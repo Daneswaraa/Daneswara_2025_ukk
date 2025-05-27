@@ -12,11 +12,54 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
+                <flux:navlist.group  class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('industri')" :current="request()->routeIs('industri')" wire:navigate>{{ __('Mitra Industri') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+
+
+
+            <flux:navlist variant="outline">
+    <div x-data="{ open: true }" class="grid">
+        <!-- Tombol untuk toggle -->
+        <button @click="open = !open" class="flex items-center justify-between px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 transition w-full">
+            <span>{{ __('Daftar Guru & Siswa') }}</span>
+            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+
+        <!-- Isi Menu -->
+        <div x-show="open" x-collapse class="pl-4 mt-2 space-y-1">
+        <flux:navlist.item icon="user" :href="route('guru')" :current="request()->routeIs('guru')" wire:navigate>
+            {{ __('Guru Sija') }}
+        </flux:navlist.item>
+        </div>
+
+    </flux:navlist>
+
+    <flux:navlist variant="outline">
+    <div x-data="{ open: true }" class="grid">
+        <!-- Tombol untuk toggle -->
+        <button @click="open = !open" class="flex items-center justify-between px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 transition w-full">
+            <span>{{ __('PKL') }}</span>
+            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+
+        <!-- Isi Menu -->
+        <div x-show="open" x-collapse class="pl-4 mt-2 space-y-1">
+            <flux:navlist.item icon="briefcase" :href="route('industri')" :current="request()->routeIs('industri')" wire:navigate>
+                {{ __('Industri') }}
+            </flux:navlist.item>
+            <flux:navlist.item icon="document-text" :href="route('laporan')" :current="request()->routeIs('laporan')" wire:navigate>
+                {{ __('Laporan') }}
+            </flux:navlist.item>
+            </div>
+    </div>
+    </flux:navlist>
+
 
             <flux:spacer />
 

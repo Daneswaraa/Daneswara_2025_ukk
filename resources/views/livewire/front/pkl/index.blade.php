@@ -22,8 +22,8 @@
     {{-- ./tampilan pesan --}}
 
     {{-- Judul  --}}
-    <div class="w-full bg-gray-200 p-4 text-center text-xl font-bold">
-      Laporan Siswa PKL
+    <div class="w-full bg-blue-200 p-4 text-center text-xl font-bold text-black">
+      LAPORAN SISWA PKL
     </div>
     {{-- Judul./  --}}
     
@@ -42,8 +42,11 @@
         {{-- ./cek apakah menampilkan halaman modal --}}
 
         {{-- form searching --}}
-        <input wire:model.live="search" type="text" placeholder="Search ..." class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        {{-- ./form searching --}}
+    <input wire:model.live="search" 
+           type="text" 
+           placeholder="Search ..." 
+           class="border border-blue-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 text-black">
+    {{-- ./form searching --}}
     </div>
     {{-- ./Form Entry dan Searching --}}
 
@@ -79,13 +82,13 @@
           
           <tr class="hover:bg-gray-100">
             {{-- <td class="px-4 py-2 border-b border-gray-200">{{ $pkl->id }}</td> --}}
-            <td class="px-4 py-2 border-b border-gray-200">{{ $no }}</td>
-            <td class="px-4 py-2 border-b border-gray-200">{{ $pkl->siswa->nama }}</td>
-            <td class="px-4 py-2 border-b border-gray-200">{{ $pkl->industri->nama }}</td>
-            <td class="px-4 py-2 border-b border-gray-200">{{ $pkl->industri->bidang_usaha }}</td>
-            <td class="px-4 py-2 border-b border-gray-200">{{ $pkl->mulai }}</td>
-            <td class="px-4 py-2 border-b border-gray-200">{{ $pkl->selesai }}</td>
-            <td class="px-4 py-2 border-b border-gray-200">{{ $selisihHari }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $no }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $pkl->siswa->nama }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $pkl->industri->nama }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $pkl->industri->bidang_usaha }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $pkl->mulai }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $pkl->selesai }}</td>
+            <td class="px-4 py-2 border-b border-gray-200 text-black">{{ $selisihHari }}</td>
               {{-- <img src="{{ asset('/storage/product/'.$product->image) }}" class="rounded" style="width: 150px"> --}}
               {{-- <img src="{{ asset('storage/product/' . $image->name) }}" alt="{{ $image->title }}" width="200"> --}}
               {{-- {{ $product->image }} --}}

@@ -47,11 +47,8 @@ class SiswaPolicy
      */
     public function delete(User $user, Siswa $siswa): bool
     {
-        // return $user->can('delete_siswa');
-        return $user->can('delete_siswa') && !$siswa->pkls()->exists();
+        return $user->can('delete_siswa');
     }
-
-    
 
     /**
      * Determine whether the user can bulk delete.

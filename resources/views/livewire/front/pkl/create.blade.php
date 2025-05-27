@@ -19,72 +19,73 @@
         <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
         <div>
 
-          <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="text-lg text-gray-700 px-2">Siswa</legend>
+        <fieldset class="border border-gray-300 rounded-md p-4">
+    <legend class="text-lg text-gray-700 px-2">Siswa</legend>
 
-            <div class="mb-4">
-              {{-- <input type="text" value="{{ $siswa_login->nama }}">
-              <input wire:model="siswaId" type="text" name="nama" value="{{ $siswa_login->id }}" readonly> --}}
-              <select wire:model="siswaId">
-                <option value="">Pilih Siswa</option>
-                  
+          <div class="mb-4">
+            <select wire:model="siswaId" class="border border-gray-300 rounded-md p-2 w-full text-black">
+                <option value="" class="text-gray-500">Pilih Siswa</option>
                 {{-- @foreach ($siswa as $s) --}}
-                  <option value="{{ $siswa_login->id }}">{{ $siswa_login->nama }}</option>
+                <option value="{{ $siswa_login->id }}" class="text-black">{{ $siswa_login->nama }}</option>
                 {{-- @endforeach --}}
-              </select>
-                  
-              @error('siswaId') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
+            </select>
+            @error('siswaId') <span class="text-red-500">{{ $message }}</span>@enderror
+          </div>
           </fieldset>
-
+          
           <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="text-lg text-gray-700 px-2">Industri</legend>
-            <div class="mb-4">
-                  <select wire:model="industriId">
-                      <option value="">Pilih Industri</option>
-                      @foreach ($industris as $industri)
-                          <option value="{{ $industri->id }}">{{ $industri->nama }}</option>
-                      @endforeach
-                  </select>
-                  
-                  @error('industriId') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
-          </fieldset>
+    <legend class="text-lg text-gray-700 px-2">Industri</legend>
+    <div class="mb-4">
+        <select wire:model="industriId" class="border border-gray-300 rounded-md p-2 w-full text-black">
+            <option value="" class="text-gray-500">Pilih Industri</option>
+            @foreach ($industris as $industri)
+                <option value="{{ $industri->id }}" class="text-black">{{ $industri->nama }}</option>
+            @endforeach
+        </select>
+        @error('industriId') <span class="text-red-500">{{ $message }}</span>@enderror
+    </div>
+</fieldset>
 
-          <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="text-lg text-gray-700 px-2">Guru Pembimbing</legend>
-            <div class="mb-4">
-              <select wire:model="guruId">
-                <option value="">Pilih Guru Pembimbing PKL</option>
-                  @foreach ($gurus as $guru)
-                    <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
-                  @endforeach
-              </select>
-                  
-              @error('guruId') <span class="text-red-500">{{ $message }}</span>@enderror
-            </div>
-          </fieldset>
+<fieldset class="border border-gray-300 rounded-md p-4">
+    <legend class="text-lg text-gray-700 px-2">Guru Pembimbing</legend>
+    <div class="mb-4">
+        <select wire:model="guruId" class="border border-gray-300 rounded-md p-2 w-full text-black">
+            <option value="" class="text-gray-500">Pilih Guru Pembimbing PKL</option>
+            @foreach ($gurus as $guru)
+                <option value="{{ $guru->id }}" class="text-black">{{ $guru->nama }}</option>
+            @endforeach
+        </select>
+        @error('guruId') <span class="text-red-500">{{ $message }}</span>@enderror
+    </div>
+</fieldset>
 
-          <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="text-lg text-gray-700 px-2">Pelaksanaan PKL</legend>
+<fieldset class="border border-gray-300 rounded-md p-4">
+    <legend class="text-lg text-gray-700 px-2">Pelaksanaan PKL</legend>
 
-            <div class="mb-4">
-                  <label for="Mulai" class="block mb-2 text-sm font-bold text-gray-700">Mulai</label>
-                  <input wire:model="mulai" type="date" id="start-date" name="start-date" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none">
-                  
-                  
-                  @error('mulai') <span class="text-red-500">{{ $message }}</span>@enderror
-              </div>
+    <div class="mb-4">
+        <label for="Mulai" class="block mb-2 text-sm font-bold text-gray-700">Mulai</label>
+        <input wire:model="mulai" 
+               type="date" 
+               id="start-date" 
+               name="start-date" 
+               class="mt-1 p-2 border border-gray-300 rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none">
+        @error('mulai') 
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+    </div>
 
-              <div class="mb-4">
-                  <label for="Selesai" class="block mb-2 text-sm font-bold text-gray-700">Selesai</label>
-                  <input wire:model="selesai" type="date" id="start-date" name="end-date" class="mt-1 p-2 border rounded-md w-full focus:ring focus:ring-blue-300 focus:outline-none">
-                  
-                  
-                  @error('selesai') <span class="text-red-500">{{ $message }}</span>@enderror
-              </div>
-            
-          </fieldset>
+    <div class="mb-4">
+        <label for="Selesai" class="block mb-2 text-sm font-bold text-gray-700">Selesai</label>
+        <input wire:model="selesai" 
+               type="date" 
+               id="end-date" 
+               name="end-date" 
+               class="mt-1 p-2 border border-gray-300 rounded-md w-full text-black focus:ring focus:ring-blue-300 focus:outline-none">
+        @error('selesai') 
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+    </div>
+</fieldset>
 
         </div>
       </div>

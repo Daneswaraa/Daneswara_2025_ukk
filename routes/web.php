@@ -10,10 +10,12 @@ Route::get('/siswa', function () {
 })->middleware(['auth', 'verified','role:siswa'])
  ->name('siswa');
 
+// Route::get('/', function () {
+//     return view('welcome2');
+// })->middleware(['auth','verified','role:siswa'])->name('home');
 Route::get('/', function () {
-    return view('w');
-})->middleware(['auth','verified','role:siswa'])->name('home');
-
+    return view('welcome2'); // Halaman awal dengan tombol login
+})->name('home');
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified','role:siswa','check_user_email'])
 //     ->name('dashboard');
@@ -21,6 +23,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified','role:siswa','check_user_email'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::get('/industri', App\Livewire\Front\Industri\Index::class)->name('industri');
+    Route::get('/laporan', App\Livewire\Front\Pkl\Index::class)->name('laporan');
+    Route::get('/guru', App\Livewire\Front\Guru\Index::class)->name('guru');
 });
 
 Route::middleware(['auth'])->group(function () {
