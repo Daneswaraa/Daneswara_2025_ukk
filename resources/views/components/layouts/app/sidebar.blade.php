@@ -11,42 +11,74 @@
                 <x-app-logo />
             </a>
 
-            <flux:navlist variant="outline">
-                <flux:navlist.group  class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
+            <flux:navlist variant="outline" style="font-family: 'Poppins', sans-serif;">
+  <flux:navlist.group class="grid gap-2">
+    <flux:navlist.item
+      icon="home"
+      :href="route('dashboard')"
+      :current="request()->routeIs('dashboard')"
+      wire:navigate
+      class="block px-6 py-4 rounded-lg text-gray-900 font-semibold shadow-md transition-transform duration-200 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      style="font-family: 'Poppins', sans-serif;"
+    >
+      {{ __('Dashboard') }}
+    </flux:navlist.item>
+  </flux:navlist.group>
+</flux:navlist>
 
 
 
-            <flux:navlist variant="outline">
+    <flux:navlist variant="outline" style="font-family: 'Poppins', sans-serif;">
     <div x-data="{ open: true }" class="grid">
         <!-- Tombol untuk toggle -->
-        <button @click="open = !open" class="flex items-center justify-between px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 transition w-full">
-            <span>{{ __('Daftar Guru & Siswa') }}</span>
-            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <button
+            @click="open = !open"
+            class="flex items-center justify-between px-4 py-2 font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-all duration-200 transform hover:scale-105 hover:shadow-none w-full"
+            style="font-family: 'Poppins', sans-serif;"
+        >
+            <span class="transition-all duration-200 group-hover:text-lg"> {{ __('Daftar Guru & Siswa') }} </span>
+            <svg :class="{ 'rotate-180': open }"
+                class="w-4 h-4 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+            >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
         </button>
-
         <!-- Isi Menu -->
-        <div x-show="open" x-collapse class="pl-4 mt-2 space-y-1">
-        <flux:navlist.item icon="user" :href="route('guru')" :current="request()->routeIs('guru')" wire:navigate>
-            {{ __('Guru Sija') }}
-        </flux:navlist.item>
+        <div x-show="open" x-collapse class="pl-4 mt-2 space-y-1" style="font-family: 'Poppins', sans-serif;">
+            <flux:navlist.item icon="user-circle" :href="route('guru')" :current="request()->routeIs('guru')" wire:navigate>
+                {{ __('Guru Sija') }}
+            </flux:navlist.item>
+            <flux:navlist.item icon="user" :href="route('siswa')" :current="request()->routeIs('siswa')" wire:navigate>
+                {{ __('Siswa Sija') }}
+            </flux:navlist.item>
         </div>
+    </div>
+</flux:navlist>
 
-    </flux:navlist>
 
     <flux:navlist variant="outline">
     <div x-data="{ open: true }" class="grid">
         <!-- Tombol untuk toggle -->
-        <button @click="open = !open" class="flex items-center justify-between px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 transition w-full">
-            <span>{{ __('PKL') }}</span>
-            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-        </button>
+       <button
+    @click="open = !open"
+    class="flex items-center justify-between px-4 py-2 font-semibold text-white bg-gray-800 hover:bg-gray-700 hover:scale-105 transition-all duration-200 transform focus:outline-none focus:ring-0 w-full"
+>
+    <span class="transition-all duration-200">{{ __('PKL') }}</span>
+    <svg
+        :class="{ 'rotate-180': open }"
+        class="w-4 h-4 transform transition-transform text-white"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+</button>
 
         <!-- Isi Menu -->
         <div x-show="open" x-collapse class="pl-4 mt-2 space-y-1">

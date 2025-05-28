@@ -4,12 +4,15 @@ namespace App\Livewire\Front\Siswa;
 
 use App\Models\Siswa;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 
 class Index extends Component
 {
+    use WithPagination;
+
     public $userMail;
-    public $siswaId; // Tambahkan properti siswaId
+    public $siswaId;
 
     public function mount()
     {
@@ -24,8 +27,11 @@ class Index extends Component
 
     public function render()
     {
+        // Ambil semua data siswa untuk ditampilkan di tabel
+        $siswas = Siswa::orderBy('nama')->paginate(10);
+
         return view('livewire.front.siswa.index', [
-            'siswa' => Siswa::where('email', '=', $this->userMail)->first(),
+            'siswas' => $siswas,
         ]);
     }
 }
