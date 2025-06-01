@@ -12,8 +12,7 @@ class APIGuruController extends Controller
      */
     public function index()
     {
-        // 1. Method untuk menampilkan semua data atau data Guru
-        $guru = Guru::get();
+        $guru = Guru::all();
         return response()->json($guru, 200);
     }
 
@@ -22,17 +21,36 @@ class APIGuruController extends Controller
      */
     public function store(Request $request)
     {
-        // 3. Method untuk menyimpan (Create) Guru Baru
-        $guru = new Guru();
-        $guru->nama = $request->nama;
-        $guru->nip = $request->nip;
-        $guru->jenis_kelamin = $request->jenis_kelamin;
-        $guru->alamat = $request->alamat;
-        $guru->kontak = $request->kontak;
-        $guru->email = $request->email;
-        $guru->save();
+        try {
+            $request->validate([
+                'nama' => 'required|string|max:50',
+                'nip' => 'required|string|max:18|unique:gurus,nip',
+                'gender' => 'required|in:L,P', // ubah di sini
+                'alamat' => 'required|string',
+                'kontak' => 'required|string|max:16',
+                'email' => 'required|email|max:30|unique:gurus,email',
+            ]);
 
-        return response()->json($guru, 200);
+            $guru = new Guru();
+            $guru->nama = $request->nama;
+            $guru->nip = $request->nip;
+            $guru->gender = $request->gender; // ubah di sini
+            $guru->alamat = $request->alamat;
+            $guru->kontak = $request->kontak;
+            $guru->email = $request->email;
+            $guru->save();
+
+            return response()->json([
+                'message' => 'Data guru berhasil ditambahkan',
+                'data' => $guru
+            ], 201);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -40,8 +58,10 @@ class APIGuruController extends Controller
      */
     public function show(string $id)
     {
-        // 4. Method untuk menampilkan data satu Guru
         $guru = Guru::find($id);
+        if (!$guru) {
+            return response()->json(['message' => 'Data guru tidak ditemukan'], 404);
+        }
         return response()->json($guru, 200);
     }
 
@@ -50,17 +70,40 @@ class APIGuruController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // 5. Method untuk mengupdate data Guru
-        $guru = Guru::find($id);
-        $guru->nama = $request->nama;
-        $guru->nip = $request->nip;
-        $guru->jenis_kelamin = $request->jenis_kelamin;
-        $guru->alamat = $request->alamat;
-        $guru->kontak = $request->kontak;
-        $guru->email = $request->email;
-        $guru->save();
+        try {
+            $guru = Guru::find($id);
+            if (!$guru) {
+                return response()->json(['message' => 'Data guru tidak ditemukan'], 404);
+            }
 
-        return response()->json($guru, 200);
+            $request->validate([
+                'nama' => 'required|string|max:50',
+                'nip' => 'required|string|max:18|unique:gurus,nip,' . $id,
+                'gender' => 'required|in:L,P', // ubah di sini
+                'alamat' => 'required|string',
+                'kontak' => 'required|string|max:16',
+                'email' => 'required|email|max:30|unique:gurus,email,' . $id,
+            ]);
+
+            $guru->nama = $request->nama;
+            $guru->nip = $request->nip;
+            $guru->gender = $request->gender; // ubah di sini
+            $guru->alamat = $request->alamat;
+            $guru->kontak = $request->kontak;
+            $guru->email = $request->email;
+            $guru->save();
+
+            return response()->json([
+                'message' => 'Data guru berhasil diperbarui',
+                'data' => $guru
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -68,9 +111,12 @@ class APIGuruController extends Controller
      */
     public function destroy(string $id)
     {
-        // 6. Method untuk menghapus (Delete) data satu Guru
-        Guru::destroy($id);
+        $guru = Guru::find($id);
+        if (!$guru) {
+            return response()->json(['message' => 'Data guru tidak ditemukan'], 404);
+        }
+        $guru->delete();
 
-        return response()->json(["message" => "Deleted"], 200);
+        return response()->json(['message' => 'Data guru berhasil dihapus'], 200);
     }
 }

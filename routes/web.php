@@ -28,6 +28,14 @@ Route::middleware(['auth', 'verified','role:siswa','check_user_email'])->group(f
     Route::get('/siswa', App\Livewire\Front\Siswa\Index::class)->name('siswa');
 });
 
+// Untuk guru
+// Route::middleware(['auth', 'verified', 'role:guru', 'check_user_email'])->group(function () {
+//     Route::view('dashboard', 'dashboard')->name('dashboard');
+//     Route::get('/guru', App\Livewire\Front\Guru\Index::class)->name('guru');
+//     Route::get('/siswa', App\Livewire\Front\Siswa\Index::class)->name('siswa');
+//     Route::get('/laporan', App\Livewire\Front\Pkl\Index::class)->name('laporan');
+// });
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

@@ -400,8 +400,9 @@
             <!-- Right Section: Image -->
             <div class="right-section">
                 <div class="image-container">
-                    <img src="https://cdn.pixabay.com/photo/2020/07/08/04/12/work-5382501_1280.jpg" 
-                         alt="Students working" class="main-image">
+                <img src="https://cdn.pixabay.com/photo/2020/07/08/04/12/work-5382501_1280.jpg" 
+                alt="Students working" class="main-image">
+                <!-- <img src="/images/foto.jpg" alt="Students working" class="main-image"> -->
                     <div class="image-decoration"></div>
                     <div class="image-decoration-2"></div>
                 </div>
