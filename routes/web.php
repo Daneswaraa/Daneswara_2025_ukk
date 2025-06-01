@@ -20,10 +20,21 @@ Route::get('/', function () {
 //     ->middleware(['auth', 'verified','role:siswa','check_user_email'])
 //     ->name('dashboard');
 
-Route::middleware(['auth', 'verified','role:siswa','check_user_email'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
-    Route::get('/industri', App\Livewire\Front\Industri\Index::class)->name('industri');
+// Route::middleware(['auth', 'verified','role:guru','check_user_email'])->group(function () {
+//     Route::view('dashboard', 'dashboard')->name('dashboard');
+//     Route::get('/industri', App\Livewire\Front\Industri\Index::class)->name('industri');
+//     Route::get('/laporan', App\Livewire\Front\Pkl\Index::class)->name('laporan');
+//     Route::get('/guru', App\Livewire\Front\Guru\Index::class)->name('guru');
+//     Route::get('/siswa', App\Livewire\Front\Siswa\Index::class)->name('siswa');
+// });
+// Akses bersama untuk guru dan siswa
+Route::middleware(['auth', 'verified', 'check_user_email'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
     Route::get('/laporan', App\Livewire\Front\Pkl\Index::class)->name('laporan');
+    Route::get('/industri', App\Livewire\Front\Industri\Index::class)->name('industri');
     Route::get('/guru', App\Livewire\Front\Guru\Index::class)->name('guru');
     Route::get('/siswa', App\Livewire\Front\Siswa\Index::class)->name('siswa');
 });

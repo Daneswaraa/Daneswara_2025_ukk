@@ -88,6 +88,16 @@
             <flux:navlist.item icon="document-text" :href="route('laporan')" :current="request()->routeIs('laporan')" wire:navigate>
                 {{ __('Laporan') }}
             </flux:navlist.item>
+            <!-- @if (auth()->user()->hasRole('siswa'))
+                <x-button href="{{ route('laporan') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                         {{ __('Create Laporan') }}
+                </x-button>
+            @endif -->
+
+
             </div>
     </div>
     </flux:navlist>

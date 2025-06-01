@@ -34,6 +34,13 @@
         <button wire:click="create()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
             New Industri
         </button>
+        {{--
+        @hasrole('siswa')
+          <button wire:click="create()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+            New Industri
+          </button>
+        @endhasrole
+        --}}
 
         {{-- cek apakah menampilkan halaman modal --}}
             @if($isOpen)

@@ -16,19 +16,25 @@ class check_user_email
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
-        if (Auth::check()) {
-            $userEmail = Auth::user()->email;
+{
+    if (Auth::check()) {
+        $user = Auth::user();
 
-            // Cek apakah email user ada di tabel siswa
-            $exists = Siswa::where('email', $userEmail)->exists();
-
-            if (!$exists) {
-                Auth::logout(); // Logout user jika email tidak cocok
-                return redirect('/login')->with('error', 'Email tidak terdaftar sebagai siswa.');
-            }
+        // Jika user adalah guru, lewati pengecekan
+        if ($user->hasRole('guru')) {
+            return $next($request);
         }
-        
-        return $next($request);
+
+        // Jika siswa, cek apakah email terdaftar di tabel siswa
+        $exists = \App\Models\Siswa::where('email', $user->email)->exists();
+
+        if (!$exists) {
+            Auth::logout();
+            return redirect('/login')->with('error', 'Email tidak terdaftar sebagai siswa.');
+        }
     }
+
+    return $next($request);
+}
+
 }
