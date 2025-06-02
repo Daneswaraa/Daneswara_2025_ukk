@@ -28,7 +28,8 @@ Route::get('/', function () {
 //     Route::get('/siswa', App\Livewire\Front\Siswa\Index::class)->name('siswa');
 // });
 // Akses bersama untuk guru dan siswa
-Route::middleware(['auth', 'verified', 'check_user_email'])->group(function () {
+//Route::middleware(['auth', 'verified', 'check_user_email'])->group(function () {
+    Route::middleware(['auth', 'verified', 'check_user_email', 'role:guru|siswa'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
