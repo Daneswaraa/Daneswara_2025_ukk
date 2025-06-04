@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-900 text-gray-100 flex flex-col justify-center items-center py-10 px-6">
         <div class="mb-12 text-center">
             <h1 class="text-5xl font-extrabold text-blue-400 leading-tight tracking-wide">
-                Selamat Datang, {{ auth()->user()->name }}!
+                Selamat Datang, {{ auth()->user()->name }}
             </h1>
             <p class="mt-4 text-xl text-gray-300">
                 Role Anda: <strong class="text-blue-300">{{ auth()->user()->getRoleNames()->first() }}</strong>
@@ -20,7 +20,7 @@
             @endhasrole
         </div>
 
-        <div class="w-full max-w-4xl bg-gray-800 rounded-lg shadow-xl p-8 mt-8">
+        <!-- <div class="w-full max-w-4xl bg-gray-800 rounded-lg shadow-xl p-8 mt-8">
             <h2 class="text-3xl font-bold text-gray-200 mb-6 border-b border-gray-700 pb-4">Informasi Penting</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 Ini adalah area untuk menampilkan informasi atau fitur lain di dashboard Anda.
@@ -36,6 +36,6 @@
                     <span>Notifikasi</span>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </x-layouts.app>

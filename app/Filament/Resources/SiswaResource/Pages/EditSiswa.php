@@ -13,7 +13,9 @@ class EditSiswa extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+           // Actions\DeleteAction::make(),
+           Actions\DeleteAction::make()
+            ->hidden(fn () => $this->record->status_lapor_pkl),
         ];
     }
     protected function getRedirectUrl(): string

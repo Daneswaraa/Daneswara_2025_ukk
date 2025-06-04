@@ -43,12 +43,26 @@ class SiswaResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('kontak')
+                    // ->required()
+                    // ->maxLength(16),
                     ->required()
-                    ->maxLength(16),
+                    ->maxLength(16)
+                    ->label('Nomor Kontak')
+                    //->helperText('Awali dengan 08..., otomatis diubah ke +62 saat disimpan')
+                    ->dehydrateStateUsing(function ($state) {
+                        return preg_replace('/^08/', '+628', $state);
+                }),
+
                 Forms\Components\TextInput::make('email')
+                    // ->email()
+                    // ->required()
+                    // ->maxLength(30),
                     ->email()
                     ->required()
-                    ->maxLength(30),
+                    ->maxLength(30)
+                    ->unique(ignoreRecord: true)
+                    ->label('Email'),
+                    //->helperText('Email harus unik, tidak boleh sama dengan siswa lain.'),
                 Forms\Components\Toggle::make('status_lapor_pkl')
                     ->required(),
                 
